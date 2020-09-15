@@ -1,3 +1,10 @@
+<?php
+$is_auth = (bool) rand(0, 1);
+
+$user_name = 'Констaнтин';
+$user_avatar = '../img/user.jpg';
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -21,6 +28,26 @@
         <a class="main-header__add-lot button" href="add-lot.html">Добавить лот</a>
 
         <nav class="user-menu">
+
+        <?php if ($is_auth == true): ?>
+            <div class="user-menu__image">
+                <img src="<?php print "$user_avatar" ?>" width="40" height="40" alt="Пользователь">
+            </div>
+            <div class="user-menu__logged">
+                <p><?php print "$user_name" ?></p>
+            <a href="../pages/login.html">Выйти</a>
+          </div>
+
+        <?php else: ?>
+           <ul class="user-menu__list">
+            <li class="user-menu__item">
+                <a href="../pages/sign-up.html">Регистрация</a>
+            </li>
+            <li class="user-menu__item">
+                <a href="../pages/login.html">Вход</a>
+                </li>
+            </ul>
+        <?php endif; ?>
         
         </nav>
     </div>
